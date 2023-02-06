@@ -1,6 +1,7 @@
 import { Routes , Route, BrowserRouter } from 'react-router-dom';
 import './index.css?modules=false';
 import CustomerDetails from './components/customer-details';
+import CustomerDashboard from './components/customer-dashboard.js';
 
 
 
@@ -17,7 +18,8 @@ export default function Root(props) {
 <Routes>
 
   
-  <Route  path="/customer/customer-detail" element={<CustomerDetails />} />
+  <Route  path="/customer/customer-detail/:customerId" element={<CustomerDetails {...props} />} />
+  <Route  path="/customer" element={<CustomerDashboard />} />
   {/* <Route path="/customer-list" component={CustomerApp} /> */}
 </Routes>
 
