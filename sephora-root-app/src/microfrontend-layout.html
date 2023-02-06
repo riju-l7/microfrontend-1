@@ -1,0 +1,46 @@
+<single-spa-router>
+  <!--
+
+    This is the single-spa Layout Definition for your microfrontends.
+    See https://single-spa.js.org/docs/layout-definition/ for more information.
+
+  -->
+
+  <!-- Example layouts you might find helpful:
+
+  <nav>
+    <application name="@org/navbar"></application>
+  </nav>
+  <route path="settings">
+    <application name="@org/settings"></application>
+  </route>
+
+  -->
+
+  <main>
+    <!--<nav>
+      <application name="@single-spa/welcome"></application>
+    </nav>-->
+    <route path="welcome">
+      1234
+      <br>
+      <application name="@single-spa/welcome"></application>
+    </route>
+    <route path="order">
+      12345
+      <br>
+      <application name="@sephora/order-mfe""></application>
+    </route>
+    <route path="customer">
+      12345
+      <br>
+      <application name="@sephora/customer-mfe""></application>
+    </route>
+
+    <route default>
+      abcd
+      <br>
+      <application name="@sephora/customer-mfe"></application>
+    </route>
+  </main>
+</single-spa-router>
