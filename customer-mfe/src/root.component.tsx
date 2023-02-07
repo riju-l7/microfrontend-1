@@ -18,8 +18,10 @@ export default function Root(props) {
 <Routes>
 
   
-  <Route  path="/customer/customer-detail/:customerId" element={<CustomerDetails {...props} />} />
-  <Route  path="/customer" element={<CustomerDashboard />} />
+    <Route  path="/customer/customer-detail/:customerId" element={<CustomerDetails {...props} />} />
+    <Route  path="/customer" element={<CustomerDashboard />} />
+  
+  
   {/* <Route path="/customer-list" component={CustomerApp} /> */}
 </Routes>
 

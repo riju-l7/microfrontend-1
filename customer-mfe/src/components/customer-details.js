@@ -6,9 +6,12 @@ import { useParams } from "react-router-dom";
 
 
 
+
 const CustomerDetails = (props)=>{
 
     debugger;
+    // This is how we useContext!! Similar to useState
+  
     let { customerId } = useParams(); 
     return (
         
