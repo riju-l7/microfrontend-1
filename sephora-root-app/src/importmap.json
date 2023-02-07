@@ -1,0 +1,13 @@
+{
+    "imports": {
+      "single-spa": "https://cdn.jsdelivr.net/npm/single-spa@5.9.0/lib/system/single-spa.min.js",
+      "@single-spa/welcome": "https://unpkg.com/single-spa-welcome/dist/single-spa-welcome.js",
+      "@sephora-root-app/root-config": "http://localhost:9000/sephora-root-app-root-config.js",
+      "react": "https://cdn.jsdelivr.net/npm/react@17.0.2/umd/react.production.min.js",
+      "react-dom": "https://cdn.jsdelivr.net/npm/react-dom@17.0.2/umd/react-dom.production.min.js",
+      "@sephora/customer-mfe": "http://localhost:8080/sephora-customer-mfe.js",
+      "@sephora/order-mfe": "http://localhost:8084/sephora-order-mfe.js",
+      "@sephora/navbar-mfe": "http://localhost:8081/sephora-navbar-mfe.js"
+      
+    }
+  }

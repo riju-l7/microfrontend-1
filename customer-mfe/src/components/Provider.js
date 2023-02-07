@@ -43,7 +43,8 @@ const ProviderComponent  = (props)=>{
                     console.log('Context Data' + data);
                     data.customerId='';
                     data.orderId='';       
-                    Cookies.set('contextCookie', data?.contextId);
+                    Cookies.set('contextCookie', data?.contextId,  { domain: 'sephora.com' });
+                    
                     setContextData(data);
                 })
                 .catch((err) => {
