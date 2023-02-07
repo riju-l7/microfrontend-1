@@ -7,12 +7,12 @@ import ProviderComponent from './components/Provider.js';
 
 
 export default function Root(props) {
-
+  
 
 
   return (
 
-    <ProviderComponent>
+    <ProviderComponent {...props} >
   <section>
 
 <BrowserRouter>

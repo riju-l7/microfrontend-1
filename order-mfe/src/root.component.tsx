@@ -2,6 +2,7 @@ import React from "react";
 import { Routes, Route, BrowserRouter } from "react-router-dom";
 import { useState, useEffect } from "react";
 import OrderDashboard from "./components/order-dashboard";
+import OrderDetail from "./components/order-detail";
 import ProviderComponent from "./components/Provider.js";
 
 export default function Root(props) {
@@ -11,6 +12,7 @@ export default function Root(props) {
         <BrowserRouter>
           <Routes>
             <Route path="/order" element={<OrderDashboard />} />
+            <Route path="/order/:orderId" element={<OrderDetail />} />
           </Routes>
         </BrowserRouter>
       </section>
