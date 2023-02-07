@@ -5,7 +5,7 @@ export default function Root(props) {
   return <nav>
       <ul>
         <li>
-          <a href="/">home</a>
+          <a href="/home">home</a>
         </li>
         <li>
           <a href="/customer">Customer</a>

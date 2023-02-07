@@ -60,7 +60,7 @@
     "@types/systemjs": "^6.1.1",
     "@types/webpack-env": "^1.16.2",
     "js-cookie": "^3.0.1",
-    "l7-profile-details-widget": "^9.0.1",
+    "l7-profile-details-widget": "^9.7.8",
     "l7-profile-list-widget": "^1.0.5",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",

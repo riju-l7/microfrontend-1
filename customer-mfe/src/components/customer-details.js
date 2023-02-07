@@ -17,6 +17,10 @@ const CustomerDetails = (props)=>{
     // This is how we useContext!! Similar to useState
   
     let { customerId } = useParams(); 
+    if (!customerId) {
+        customerId = contextData?.customerId;
+    }
+    console.log('customerId_detail', customerId);
     return (
         
         <div className="text-3xl font-bold underline">
