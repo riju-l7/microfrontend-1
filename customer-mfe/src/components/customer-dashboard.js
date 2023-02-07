@@ -3,20 +3,23 @@ import 'l7-profile-list-widget/dist/index.css'
 import { useContext } from 'react';
 import { ProfileDetailsWidget } from 'l7-profile-details-widget'
 import 'l7-profile-details-widget/dist/index.css'
-
+import {Context} from './Provider';
 
 
 const CustomerDashboard = ()=>{
-    debugger;
     
 
+    const [contextData, setContextData] = useContext(Context);
+    
+    console.log("ContextData......", contextData);
     return (
         
         <div className="text-3xl font-bold">Customer Dashboard Page 
+        
         <br/>
         
         
-        <ProfileDetailsWidget widgetId="customer-mfe-dahboard-profile-details-widgtId" customerId="2" env="qa" />
+        <ProfileDetailsWidget widgetId="customer-mfe-dahboard-profile-details-widgtId" context={{contextData, setContextData}} customerId={contextData.customerId} env="qa" />
         <ProfileListWidget widgetId="cutomer-mfe-profile-list-widget" env="qa" />
         
         

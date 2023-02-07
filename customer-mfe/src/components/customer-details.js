@@ -3,13 +3,17 @@ import 'l7-profile-details-widget/dist/index.css'
 import { ProfileListWidget } from 'l7-profile-list-widget'
 import 'l7-profile-list-widget/dist/index.css'
 import { useParams } from "react-router-dom";
+import {Context} from './Provider';
+import React, {useContext} from 'react';
 
 
 
 
 const CustomerDetails = (props)=>{
 
-    debugger;
+    const [contextData, setContextData] = useContext(Context);
+
+    console.log("ContextData......insidecustomerdetail", contextData);
     // This is how we useContext!! Similar to useState
   
     let { customerId } = useParams(); 
@@ -18,7 +22,7 @@ const CustomerDetails = (props)=>{
         <div className="text-3xl font-bold underline">
             Customer Detail Page 
             <br/>
-            <ProfileDetailsWidget widgetId="customer-mfe-widgtId" customerId={customerId} env="qa" />
+            <ProfileDetailsWidget widgetId="customer-mfe-widgtId" customerId={customerId} env="qa" context={{contextData, setContextData}} />
             
             <br/>
 
