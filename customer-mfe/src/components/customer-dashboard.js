@@ -13,19 +13,27 @@ const CustomerDashboard = ()=>{
     
     console.log("ContextData......", contextData);
     return (
-        
-        <div className="text-3xl font-bold">Customer Dashboard Page 
-        
-        <br/>
-        
-        
-        <ProfileDetailsWidget widgetId="customer-mfe-dahboard-profile-details-widgtId" context={{contextData, setContextData}} customerId={contextData.customerId} env="qa" />
-        <ProfileListWidget widgetId="cutomer-mfe-profile-list-widget" env="qa" />
-        
-        
+      <div className='text-3xl font-semibold text-center underline'>
+        Customer Dashboard
+        <br />
+        <div className='grid gap-3 grid-cols-4 mt-10'>
+          <div className='col-span-1'>
+            <ProfileDetailsWidget
+              widgetId='customer-mfe-dahboard-profile-details-widgtId'
+              context={{ contextData, setContextData }}
+              customerId={2}
+              env='qa'
+            />
+          </div>
+          <div className='col-span-3' >
+            <ProfileListWidget
+              widgetId='cutomer-mfe-profile-list-widget'
+              env='qa'
+            />
+          </div>
         </div>
-        
-    )
+      </div>
+    );
 }
 
 export default CustomerDashboard;
