@@ -21,11 +21,11 @@ const CustomerDashboard = ()=>{
             <ProfileDetailsWidget
               widgetId='customer-mfe-dahboard-profile-details-widgtId'
               context={{ contextData, setContextData }}
-              customerId={2}
+              customerId={contextData.customerId}
               env='qa'
             />
           </div>
-          <div className='col-span-3' >
+          <div className='col-span-3'>
             <ProfileListWidget
               widgetId='cutomer-mfe-profile-list-widget'
               env='qa'
