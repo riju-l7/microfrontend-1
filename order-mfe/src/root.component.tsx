@@ -1,4 +1,5 @@
 import React from "react";
+import './index.css?modules=false';
 import { Routes, Route, BrowserRouter } from "react-router-dom";
 import { useState, useEffect } from "react";
 import OrderDashboard from "./components/order-dashboard";

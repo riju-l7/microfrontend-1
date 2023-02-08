@@ -9,16 +9,24 @@ const OrderDashboard = ()=>{
     const [contextData, setContextData] = useContext(Context);
     console.log("ContextData..inside order dashboard.", contextData);
     return (
-        
-        <div className="text-3xl font-bold">Order Dashboard Page 
-        <br/>
-        <h3>Recent Orders By Customer</h3>
-        <OrderListWidget isRecentOrders={true} customerId={contextData.customerId.toString()}  context={{contextData, setContextData}}  env="qa" />
-        <h3>All Orders</h3>
-        <OrderListWidget isRecentOrders={false}  context={{contextData, setContextData}}  env="qa" />
-        </div>
-        
-    )
+      <>
+        <div className='text-2xl font-semibold text-center'>Order Dashboard Page </div>
+        <br />
+        <div className='text-1xl font-semibold text-left'>Recent Orders By Customer</div>
+        <OrderListWidget
+          isRecentOrders={true}
+          customerId={contextData.customerId.toString()}
+          context={{ contextData, setContextData }}
+          env='qa'
+        />
+        <div className='text-1xl font-semibold text-left'>All Orders</div>
+        <OrderListWidget
+          isRecentOrders={false}
+          context={{ contextData, setContextData }}
+          env='qa'
+        />
+      </>
+    );
 }
 
 export default OrderDashboard;

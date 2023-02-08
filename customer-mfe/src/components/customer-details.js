@@ -23,7 +23,7 @@ const CustomerDetails = (props)=>{
     console.log('customerId_detail', customerId);
     return (
       <>
-        <div className='text-3xl font-bold underline text-center'>Customer Details</div>
+        <div className='text-2xl font-semibold text-center'>Customer Details</div>
         <br />
         <div className=' block mx-35-percent w-100'>
           <ProfileDetailsWidget

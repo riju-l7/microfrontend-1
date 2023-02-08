@@ -10,10 +10,19 @@ module.exports = (webpackConfigEnv, argv) => {
   });
 
   devServer: {
-    port: 8084
+    port: 8084;
   }
 
   return merge(defaultConfig, {
+
+    module: {
+      rules: [
+        {
+          test: /\.css$/i,
+          use: ['postcss-loader']
+        },
+      ],
+    },
     // modify the webpack config however you'd like to by adding to this object
   });
 };
