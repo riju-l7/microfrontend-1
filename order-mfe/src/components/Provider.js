@@ -9,12 +9,12 @@ const ProviderComponent  = (props)=>{
 
     const contextId = props?.contextId;
     const useCookies = props?.useCookies;
-    console.log('mfe contextId' , contextId);
+    console.log('mfe contextId in order mfe' , contextId);
     console.log('mfe useCookies' , useCookies);
     
     useEffect(() => {
         console.log('useEffect log 1');
-        debugger;
+       
         if (contextId && !useCookies) {
             console.log('fetching context information', contextId);
             fetch('http://localhost:8686/browseexpservice/v1/context/'+contextId)
@@ -61,7 +61,7 @@ const ProviderComponent  = (props)=>{
 
 
       useEffect(() => {
-        debugger;
+        
         console.log('inside useData' + contextData);
         if (contextData?.contextId) {
           const requestOptions = {
@@ -72,7 +72,7 @@ const ProviderComponent  = (props)=>{
           fetch('http://localhost:8686/browseexpservice/v1/context/'+contextData.contextId, requestOptions)
               .then(response => response.json())
               .then(data => {
-                debugger;
+                
                 console.log('Updated context in service' + data);
               });
         }

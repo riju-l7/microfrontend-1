@@ -15,7 +15,7 @@ const OrderDashboard = ()=>{
         <div className='text-1xl font-semibold text-left ml-5'>Recent Orders By Customer</div>
         <OrderListWidget
           isRecentOrders={true}
-          customerId={contextData.customerId.toString()}
+          customerId={contextData?.customerId?.toString()}
           context={{ contextData, setContextData }}
           env='qa'
         />

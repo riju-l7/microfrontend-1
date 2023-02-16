@@ -19,6 +19,7 @@ const CustomerDashboard = () => {
         <div className={`${contextData.customerId ? 'col-span-3' : 'col-span-4'}`}>
           <ProfileListWidget
             widgetId='cutomer-mfe-profile-list-widget'
+            context={{ contextData, setContextData }}
             env='qa'
           />
         </div>

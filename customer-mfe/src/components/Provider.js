@@ -10,7 +10,7 @@ const ProviderComponent  = (props)=>{
     const [contextData, setContextData] = useState({customerId:''})
     useEffect(() => {
         console.log('useEffect log 1');
-        debugger;
+        
         if (contextId && !useCookies) {
             console.log('fetching context information', contextId);
             fetch('http://localhost:8686/browseexpservice/v1/context/'+contextId)
@@ -23,7 +23,7 @@ const ProviderComponent  = (props)=>{
                     console.log(err.message);
                 });
         } else {
-            
+            console.log('fetching context information and create cookie if not present', contextId);
             let contextCookie = Cookies.get('contextCookie');
             console.log('fetching context information from cookie', contextCookie);
             if (contextCookie) {
@@ -58,7 +58,7 @@ const ProviderComponent  = (props)=>{
 
 
       useEffect(() => {
-        debugger;
+        
         console.log('inside useData' + contextData);
         if (contextData?.contextId) {
           const requestOptions = {
@@ -69,7 +69,7 @@ const ProviderComponent  = (props)=>{
           fetch('http://localhost:8686/browseexpservice/v1/context/'+contextData.contextId, requestOptions)
               .then(response => response.json())
               .then(data => {
-                debugger;
+                
                 console.log('Updated context in service' + data);
               });
         }

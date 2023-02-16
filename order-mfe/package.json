@@ -61,7 +61,7 @@
     "@types/webpack-env": "^1.16.2",
     "js-cookie": "^3.0.1",
     "l7-order-detail-widget": "^1.1.0",
-    "l7-order-list-widget": "^2.1.0",
+    "l7-order-list-widget": "^2.1.4",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-router-dom": "^6.8.0",
