@@ -13,7 +13,7 @@ const ProviderComponent  = (props)=>{
         
         if (contextId && !useCookies) {
             console.log('fetching context information', contextId);
-            fetch('http://localhost:8686/browseexpservice/v1/context/'+contextId)
+            fetch('https://localhost:8443/browseexpservice/v1/context/'+contextId)
                 .then((response) => response.json())
                 .then((data) => {
                     console.log('Context Data' + data);
@@ -27,7 +27,7 @@ const ProviderComponent  = (props)=>{
             let contextCookie = Cookies.get('contextCookie');
             console.log('fetching context information from cookie', contextCookie);
             if (contextCookie) {
-                fetch('http://localhost:8686/browseexpservice/v1/context/'+contextCookie)
+                fetch('https://localhost:8443/browseexpservice/v1/context/'+contextCookie)
                 .then((response) => response.json())
                 .then((data) => {
                     console.log('Context Data' + data);
@@ -37,7 +37,7 @@ const ProviderComponent  = (props)=>{
                     console.log(err.message);
                 });
                 } else {
-                fetch('http://localhost:8686/browseexpservice/v1/context/create')
+                fetch('https://localhost:8443/browseexpservice/v1/context/create')
                 .then((response) => response.json())
                 .then((data) => {
                     console.log('Context Data' + data);
@@ -66,7 +66,7 @@ const ProviderComponent  = (props)=>{
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(contextData)
           };
-          fetch('http://localhost:8686/browseexpservice/v1/context/'+contextData.contextId, requestOptions)
+          fetch('https://localhost:8443/browseexpservice/v1/context/'+contextData.contextId, requestOptions)
               .then(response => response.json())
               .then(data => {
                 

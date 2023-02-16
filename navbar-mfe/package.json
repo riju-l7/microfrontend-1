@@ -1,8 +1,8 @@
 {
   "name": "@sephora/navbar-mfe",
   "scripts": {
-    "start": "webpack serve --port 8081 --env isLocal",
-    "start:standalone": "webpack serve --port 8081 --env standalone",
+    "start": "webpack serve --port 8081 --https --env isLocal",
+    "start:standalone": "webpack serve --port 8081 --https  --env standalone",
     "build": "concurrently npm:build:*",
     "build:webpack": "webpack --mode=production",
     "analyze": "webpack --mode=production --env analyze",
