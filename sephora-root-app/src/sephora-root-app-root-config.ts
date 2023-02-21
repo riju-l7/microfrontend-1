@@ -23,9 +23,14 @@ console.log('contextId from params ', contextId);
 
 const fetchData = async (contextId)=>{
   if (!contextId) {
-    const result = await fetch('https://localhost:8443/browseexpservice/v1/context/create')
-    const payload = await result.json();
-    contextId = payload?.contextId;
+    try {
+      const result = await fetch('https://localhost:8443/browseexpservice/v1/context/create')
+      const payload = await result.json();
+      contextId = payload?.contextId;
+    } catch(e) {
+      console.log("Error.", e)
+    }
+   
   }
   
   let useCookies= true;

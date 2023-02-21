@@ -15,47 +15,47 @@ const ProviderComponent  = (props)=>{
     useEffect(() => {
         console.log('useEffect log 1');
        
-        if (contextId && !useCookies) {
-            console.log('fetching context information', contextId);
-            fetch('https://localhost:8443/browseexpservice/v1/context/'+contextId)
-                .then((response) => response.json())
-                .then((data) => {
-                    console.log('Context Data' + data);
-                    setContextData(data);
-                })
-                .catch((err) => {
-                    console.log(err.message);
-                });
-        } else {
+        // if (contextId && !useCookies) {
+        //     console.log('fetching context information', contextId);
+        //     fetch('https://localhost:8443/browseexpservice/v1/context/'+contextId)
+        //         .then((response) => response.json())
+        //         .then((data) => {
+        //             console.log('Context Data' + data);
+        //             setContextData(data);
+        //         })
+        //         .catch((err) => {
+        //             console.log(err.message);
+        //         });
+        // } else {
             
-            let contextCookie = Cookies.get('contextCookie');
-            console.log('fetching context information from cookie', contextCookie);
-            if (contextCookie) {
-                fetch('https://localhost:8443/browseexpservice/v1/context/'+contextCookie)
-                .then((response) => response.json())
-                .then((data) => {
-                    console.log('Context Data' + data);
-                    setContextData(data);
-                })
-                .catch((err) => {
-                    console.log(err.message);
-                });
-                } else {
-                fetch('https://localhost:8443/browseexpservice/v1/context/create')
-                .then((response) => response.json())
-                .then((data) => {
-                    console.log('Context Data' + data);
-                    data.customerId='';
-                    data.orderId='';       
-                    Cookies.set('contextCookie', data?.contextId, { domain: 'sephora.com' });
-                    setContextData(data);
-                })
-                .catch((err) => {
-                    console.log(err.message);
-                    return null;
-                });
-            }
-        }
+        //     let contextCookie = Cookies.get('contextCookie');
+        //     console.log('fetching context information from cookie', contextCookie);
+        //     if (contextCookie) {
+        //         fetch('https://localhost:8443/browseexpservice/v1/context/'+contextCookie)
+        //         .then((response) => response.json())
+        //         .then((data) => {
+        //             console.log('Context Data' + data);
+        //             setContextData(data);
+        //         })
+        //         .catch((err) => {
+        //             console.log(err.message);
+        //         });
+        //         } else {
+        //         fetch('https://localhost:8443/browseexpservice/v1/context/create')
+        //         .then((response) => response.json())
+        //         .then((data) => {
+        //             console.log('Context Data' + data);
+        //             data.customerId='';
+        //             data.orderId='';       
+        //             Cookies.set('contextCookie', data?.contextId, { domain: 'sephora.com' });
+        //             setContextData(data);
+        //         })
+        //         .catch((err) => {
+        //             console.log(err.message);
+        //             return null;
+        //         });
+        //     }
+        // }
         
       }, []);
 
