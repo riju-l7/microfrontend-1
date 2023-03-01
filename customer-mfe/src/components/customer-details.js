@@ -1,7 +1,5 @@
 import { ProfileDetailsWidget } from 'l7-profile-details-widget'
 import 'l7-profile-details-widget/dist/index.css'
-import { ProfileListWidget } from 'l7-profile-list-widget'
-import 'l7-profile-list-widget/dist/index.css'
 import { useParams } from "react-router-dom";
 import {Context} from './Provider';
 import React, {useContext} from 'react';

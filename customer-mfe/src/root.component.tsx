@@ -15,7 +15,7 @@ export default function Root(props) {
               element={<CustomerDetails {...props} />}
             />
             <Route
-              path='/customer'
+              path='/customer/*'
               element={<CustomerDashboard />}
             />
 
