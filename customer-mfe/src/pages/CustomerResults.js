@@ -6,7 +6,8 @@ import CustomerResultsTable from '../components/customer-results-table';
  const CustomerResultPage = ()=>{
     return (
     
-        <CustomerResultsTable />
+        // <CustomerResultsTable />
+        <>Click on Customer to view Detail.</>
 
     )
 }

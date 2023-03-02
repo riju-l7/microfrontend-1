@@ -13,7 +13,7 @@ export default function Root(props) {
         <BrowserRouter>
           <Routes>
             <Route path="/order" element={<OrderDashboard />} />
-            <Route path="/order/order-detail/:orderId" element={<OrderDetail />} />
+            <Route path="/order/details/:orderId" element={<OrderDetail />} />
           </Routes>
         </BrowserRouter>
       </section>

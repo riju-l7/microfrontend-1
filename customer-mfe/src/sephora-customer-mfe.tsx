@@ -8,7 +8,7 @@ const lifecycles = singleSpaReact({
   React,
   ReactDOM,
   rootComponent: Root,
-  domElementGetter: () => document.querySelector('single-spa-root').querySelector('content'),
+  // domElementGetter: () => document.querySelector('single-spa-root').querySelector('content'),
   errorBoundary(err, info, props) {
     // Customize the root error boundary for your microfrontend here.
     return null;

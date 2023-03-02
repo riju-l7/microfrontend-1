@@ -1,5 +1,6 @@
 import React, { useContext } from 'react';
-import { OrderDetailsWidget } from 'l7-order-detail-widget';
+// import { OrderDetailsWidget } from 'l7-order-detail-widget';
+import { OrderDetailsWidget } from './test';
 import 'l7-order-detail-widget/dist/index.css';
 import { Context } from './Provider';
 import { useParams } from 'react-router-dom';
@@ -20,7 +21,9 @@ const OrderDashboard = () => {
         <OrderDetailsWidget
           isRecentOrders={true}
           orderId={orderId}
+          widgetId="order-detail-widget"
           env='qa'
+          context={{ contextData, setContextData }}
         />
       </div>
     </>

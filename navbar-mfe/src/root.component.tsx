@@ -1,10 +1,14 @@
 import './index.css?modules=false';
 import Navbar from './components/navbar.js'
+import { Routes, Route, BrowserRouter } from "react-router-dom";
 
 export default function Root(props) {
   console.log('props mfe', props?.root_mfe);
   console.log('props contextId', props?.contextId);
   return (
-    <Navbar {...props} />
+    <BrowserRouter>
+        <Navbar {...props} />
+    </BrowserRouter>
+
   );
 }

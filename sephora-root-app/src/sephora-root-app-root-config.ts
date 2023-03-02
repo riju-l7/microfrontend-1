@@ -22,11 +22,11 @@ console.log('contextId from params ', contextId);
 //let contextId = null;
 
 const fetchData = async (contextId)=>{
-  if (!contextId) {
-    const result = await fetch('https://localhost:8443/browseexpservice/v1/context/create')
-    const payload = await result.json();
-    contextId = payload?.contextId;
-  }
+  // if (!contextId) {
+  //   const result = await fetch('https://localhost:8443/browseexpservice/v1/context/create')
+  //   const payload = await result.json();
+  //   contextId = payload?.contextId;
+  // }
   
   let useCookies= true;
   if(contextId) {

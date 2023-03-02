@@ -1,8 +1,8 @@
 {
   "name": "@sephora/navbar-mfe",
   "scripts": {
-    "start": "webpack serve --port 8081 --https --env isLocal",
-    "start:standalone": "webpack serve --port 8081 --https  --env standalone",
+    "start": "webpack serve --port 9001 --env isLocal",
+    "start:standalone": "webpack serve --port 9001  --env standalone",
     "build": "concurrently npm:build:*",
     "build:webpack": "webpack --mode=production",
     "analyze": "webpack --mode=production --env analyze",
@@ -63,7 +63,9 @@
     "react-dom": "^17.0.2",
     "single-spa": "^5.9.3",
     "single-spa-react": "^4.3.1",
-    "tailwindcss": "^3.2.4"
+    "tailwindcss": "^3.2.4",
+    "react-router-dom": "^6.8.0",
+    "csc-listing-widget": "3.0.0"
   },
   "types": "dist/sephora-navbar-mfe.d.ts"
 }

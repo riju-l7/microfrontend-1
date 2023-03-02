@@ -6,36 +6,37 @@ import 'l7-profile-details-widget/dist/index.css';
 import { Context } from './Provider';
 
 const CustomerResultsTable = () => {
-  const [contextData, setContextData] = useContext(Context);
+  // const [contextData, setContextData] = useContext(Context);
 
-  console.log('ContextData......', contextData);
-  return (
-    <>
-      <div className='text-2xl font-semibold text-center '>
-        Customer Dashboard
-        <br />
-      </div>
-      <div className='grid gap-3 grid-cols-4 mt-10'>
-        <div className={`${contextData.customerId ? 'col-span-3' : 'col-span-4'}`}>
-          <ProfileListWidget
-            widgetId='cutomer-mfe-profile-list-widget'
-            context={{ contextData, setContextData }}
-            env='qa'
-          />
-        </div>
-        {contextData.customerId && (
-          <div className='col-span-1'>
-            <ProfileDetailsWidget
-              widgetId='customer-mfe-dahboard-profile-details-widgtId'
-              context={{ contextData, setContextData }}
-              customerId={contextData.customerId}
-              env='qa'
-            />
-          </div>
-        )}
-      </div>
-    </>
-  );
+  // console.log('ContextData......', contextData);
+  // return (
+  //   <>
+  //     <div className='text-2xl font-semibold text-center '>
+  //       Customer Dashboard
+  //       <br />
+  //     </div>
+  //     <div className='grid gap-3 grid-cols-4 mt-10'>
+  //       <div className={`${contextData.customerId ? 'col-span-3' : 'col-span-4'}`}>
+  //         <ProfileListWidget
+  //           widgetId='cutomer-mfe-profile-list-widget'
+  //           context={{ contextData, setContextData }}
+  //           env='qa'
+  //         />
+  //       </div>
+  //       {contextData.customerId && (
+  //         <div className='col-span-1'>
+  //           <ProfileDetailsWidget
+  //             widgetId='customer-mfe-dahboard-profile-details-widgtId'
+  //             context={{ contextData, setContextData }}
+  //             customerId={contextData.customerId}
+  //             env='qa'
+  //           />
+  //         </div>
+  //       )}
+  //     </div>
+  //   </>
+  // );
+ return <div> Search for user!!!</div>
 };
 
 export default CustomerResultsTable;

@@ -1,8 +1,8 @@
 {
   "name": "@sephora/order-mfe",
   "scripts": {
-    "start": "webpack serve --port 8084 --https --env isLocal",
-    "start:standalone": "webpack serve  --port 8084 --https  --env standalone",
+    "start": "webpack serve --port 9003 --env isLocal",
+    "start:standalone": "webpack serve  --port 9003  --env standalone",
     "build": "concurrently npm:build:*",
     "build:webpack": "webpack --mode=production",
     "analyze": "webpack --mode=production --env analyze",
