@@ -7,7 +7,7 @@ import React, {
 } from 'react';
 
 // import Cookies from 'js-cookie';
-import { useHref, useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 const Context = createContext({});
 
@@ -30,7 +30,7 @@ const json_format = {
 
 const ProviderComponent = (props) => {
   const [contextData, setContextData] = useState();
-  const location = useHref();
+  const location = useLocation();
   const navigate = useNavigate();
 
   const contextId = props?.contextId;
@@ -41,7 +41,9 @@ const ProviderComponent = (props) => {
     const session = JSON.parse(sessionStorage.getItem('contextData'));
     if (session) {
       setContextData(session['order-mfe']);
-      navigate(session['order-mfe']['orders']['lastVisitedUrl']);
+      const lastVisitedUrl = session['order-mfe']['orders']['lastVisitedUrl'];
+      const { pathname } = location;
+      lastVisitedUrl !== pathname && navigate(lastVisitedUrl);
     }
     if (contextId) {
       fetch(
@@ -62,7 +64,13 @@ const ProviderComponent = (props) => {
     const body = {
       ...json_format,
     };
-    body['order-mfe']['orders']['lastVisitedUrl'] = location;
+    body['order-mfe']['orders']['lastVisitedUrl'] = null;
+    const { pathname } = location;
+    const originalPathname = window.location.pathname.split('/');
+    const previousPathname = pathname.split('/');
+    if (originalPathname[1] !== previousPathname[1]) {
+      body['order-mfe']['orders']['lastVisitedUrl'] = pathname;
+    }
     if (data && key) {
       body['order-mfe']['orders'][key] = {
         result: data,
