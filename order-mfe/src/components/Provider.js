@@ -1,94 +1,108 @@
-import React, {useContext, createContext, useState, useEffect} from 'react'
+import React, {
+  useContext,
+  createContext,
+  useState,
+  useEffect,
+  useMemo,
+} from 'react';
 
-import Cookies from 'js-cookie';
+// import Cookies from 'js-cookie';
+import { useHref, useNavigate } from 'react-router-dom';
 
-export const Context = createContext({});
-const ProviderComponent  = (props)=>{
+const Context = createContext({});
 
-    const [contextData, setContextData] = useState({customerId:''})
-
-    const contextId = props?.contextId;
-    const useCookies = props?.useCookies;
-    console.log('mfe contextId in order mfe' , contextId);
-    console.log('mfe useCookies' , useCookies);
-    
-    useEffect(() => {
-        console.log('useEffect log 1');
-       
-        if (contextId && !useCookies) {
-            console.log('fetching context information', contextId);
-            fetch('https://localhost:8443/browseexpservice/v1/context/'+contextId)
-                .then((response) => response.json())
-                .then((data) => {
-                    console.log('Context Data' + data);
-                    setContextData(data);
-                })
-                .catch((err) => {
-                    console.log(err.message);
-                });
-        } else {
-            
-            let contextCookie = Cookies.get('contextCookie');
-            console.log('fetching context information from cookie', contextCookie);
-            if (contextCookie) {
-                fetch('https://localhost:8443/browseexpservice/v1/context/'+contextCookie)
-                .then((response) => response.json())
-                .then((data) => {
-                    console.log('Context Data' + data);
-                    setContextData(data);
-                })
-                .catch((err) => {
-                    console.log(err.message);
-                });
-                } else {
-                fetch('https://localhost:8443/browseexpservice/v1/context/create')
-                .then((response) => response.json())
-                .then((data) => {
-                    console.log('Context Data' + data);
-                    data.customerId='';
-                    data.orderId='';       
-                    Cookies.set('contextCookie', data?.contextId, { domain: 'sephora.com' });
-                    setContextData(data);
-                })
-                .catch((err) => {
-                    console.log(err.message);
-                    return null;
-                });
-            }
-        }
-        
-      }, []);
-
-
-      useEffect(() => {
-        
-        console.log('inside useData' + contextData);
-        if (contextData?.contextId) {
-          const requestOptions = {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(contextData)
-          };
-          fetch('https://localhost:8443/browseexpservice/v1/context/'+contextData.contextId, requestOptions)
-              .then(response => response.json())
-              .then(data => {
-                
-                console.log('Updated context in service' + data);
-              });
-        }
-      }, [contextData]);
-      
-
-    
-
-    console.log("contextData----", contextData);
-
-    console.log("Context Data inside Order MFE", contextData);
-    return (
-        <Context.Provider value={[contextData,setContextData]} >
-            {props.children}
-        </Context.Provider>
-    )
+export function useProviderContext() {
+  return useContext(Context);
 }
+
+const json_format = {
+  'order-mfe': {
+    orders: {
+      'accordion-form-wizard': {},
+    },
+    'order-dashboard': {},
+  },
+  'customer-mfe': {
+    'customer-details': {},
+    'customer-dashboard': {},
+  },
+};
+
+const ProviderComponent = (props) => {
+  const [contextData, setContextData] = useState();
+  const location = useHref();
+  const navigate = useNavigate();
+
+  const contextId = props?.contextId;
+  // const useCookies = props?.useCookies;
+  console.log('mfe contextId in order mfe', contextId);
+
+  useEffect(() => {
+    const session = JSON.parse(sessionStorage.getItem('contextData'));
+    if (session) {
+      setContextData(session['order-mfe']);
+      navigate(session['order-mfe']['orders']['lastVisitedUrl']);
+    }
+    if (contextId) {
+      fetch(
+        `https://csc-agent-platform-service-qa1.lower.internal.sephora.com/csc-agent-platform-service/v1/context/${contextId}`
+      )
+        .then((response) => response.json())
+        .then((data) => {
+          console.log('Context Data' + data);
+          setContextData(data['order-mfe']);
+        })
+        .catch((err) => {
+          console.log(err.message);
+        });
+    }
+  }, []);
+
+  const handlePost = (data, key, location) => {
+    const body = {
+      ...json_format,
+    };
+    body['order-mfe']['orders']['lastVisitedUrl'] = location;
+    if (data && key) {
+      body['order-mfe']['orders'][key] = {
+        result: data,
+      };
+    }
+
+    setContextData(body['order-mfe']);
+    if (contextId) {
+      sessionStorage.setItem('contextData', JSON.stringify(body));
+      const requestOptions = {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(body),
+      };
+      fetch(
+        `https://csc-agent-platform-service-qa1.lower.internal.sephora.com/csc-agent-platform-service/v1/context/${contextId}`,
+        requestOptions
+      )
+        .then((response) => response.json())
+        .then((data) => {
+          console.log('Updated context in service' + data);
+        });
+    }
+  };
+
+  const orderState = useMemo(
+    () => ({
+      contextData,
+      setContextData,
+      callback: (data, key) => {
+        handlePost(data, key, location);
+      },
+    }),
+    [contextData, setContextData, location]
+  );
+
+  console.log('Context Data inside Order MFE', contextData);
+  return (
+    <Context.Provider value={orderState}>{props.children}</Context.Provider>
+  );
+};
 
 export default ProviderComponent;

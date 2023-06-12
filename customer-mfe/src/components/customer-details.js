@@ -1,7 +1,7 @@
-import { ProfileDetailsWidget } from 'l7-profile-details-widget'
-import 'l7-profile-details-widget/dist/index.css'
-import { ProfileListWidget } from 'l7-profile-list-widget'
-import 'l7-profile-list-widget/dist/index.css'
+// import { ProfileDetailsWidget } from 'l7-profile-details-widget'
+// import 'l7-profile-details-widget/dist/index.css'
+// import { ProfileListWidget } from 'l7-profile-list-widget'
+// import 'l7-profile-list-widget/dist/index.css'
 import { useParams } from "react-router-dom";
 import {Context} from './Provider';
 import React, {useContext} from 'react';
@@ -26,12 +26,12 @@ const CustomerDetails = (props)=>{
         <div className='text-2xl font-semibold text-center'>Customer Details</div>
         <br />
         <div className=' block mx-35-percent w-100'>
-          <ProfileDetailsWidget
+          {/* <ProfileDetailsWidget
             widgetId='customer-mfe-widgtId'
             customerId={customerId}
             env='qa'
             context={{ contextData, setContextData }}
-          />
+          /> */}
         </div>
         <br />
       </>

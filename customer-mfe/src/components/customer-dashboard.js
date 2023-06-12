@@ -1,14 +1,24 @@
-import { ProfileListWidget } from 'l7-profile-list-widget';
-import 'l7-profile-list-widget/dist/index.css';
+// import { ProfileListWidget } from 'l7-profile-list-widget';
+// import 'l7-profile-list-widget/dist/index.css';
 import { useContext } from 'react';
-import { ProfileDetailsWidget } from 'l7-profile-details-widget';
-import 'l7-profile-details-widget/dist/index.css';
+// import { ProfileDetailsWidget } from 'l7-profile-details-widget';
+// import 'l7-profile-details-widget/dist/index.css';
 import { Context } from './Provider';
 
 const CustomerDashboard = () => {
   const [contextData, setContextData] = useContext(Context);
 
-  console.log('ContextData......', contextData);
+  const data =
+    contextData?.['order-mfe']?.['order-detail']?.['accordion-form-wizard']?.[
+      'accordion'
+    ];
+
+  // const data =
+  //   contextData?.order -
+  //   mfe?.order -
+  //   detail?.accordion -
+  //   form -
+  //   wizard?.accordion;
   return (
     <>
       <div className='text-2xl font-semibold text-center '>
@@ -16,21 +26,47 @@ const CustomerDashboard = () => {
         <br />
       </div>
       <div className='grid gap-3 grid-cols-4 mt-10'>
-        <div className={`${contextData.customerId ? 'col-span-3' : 'col-span-4'}`}>
-          <ProfileListWidget
+        <div
+          className={`${contextData.customerId ? 'col-span-3' : 'col-span-4'}`}
+        >
+          name: {data?.name}
+          {/* {Context} */}
+          {/* <ProfileListWidget
             widgetId='cutomer-mfe-profile-list-widget'
             context={{ contextData, setContextData }}
             env='qa'
-          />
+          /> */}
+        </div>
+        <div
+          className={`${contextData.customerId ? 'col-span-3' : 'col-span-4'}`}
+        >
+          email: {data?.email}
+          {/* {Context} */}
+          {/* <ProfileListWidget
+            widgetId='cutomer-mfe-profile-list-widget'
+            context={{ contextData, setContextData }}
+            env='qa'
+          /> */}
+        </div>
+        <div
+          className={`${contextData.customerId ? 'col-span-3' : 'col-span-4'}`}
+        >
+          message: {data?.message}
+          {/* {Context} */}
+          {/* <ProfileListWidget
+            widgetId='cutomer-mfe-profile-list-widget'
+            context={{ contextData, setContextData }}
+            env='qa'
+          /> */}
         </div>
         {contextData.customerId && (
           <div className='col-span-1'>
-            <ProfileDetailsWidget
+            {/* <ProfileDetailsWidget
               widgetId='customer-mfe-dahboard-profile-details-widgtId'
               context={{ contextData, setContextData }}
               customerId={contextData.customerId}
               env='qa'
-            />
+            /> */}
           </div>
         )}
       </div>
